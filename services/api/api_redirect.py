@@ -2,10 +2,10 @@ from flask import Blueprint, request
 from module.configuration import get_config
 import requests
 
-api_redirect = Blueprint('api_redirect', __name__)
+api_redirect_service = Blueprint('api_redirect', __name__)
 conf = get_config()
 
-@api_redirect.route('/api/retention-panel/', methods=['GET'])
+@api_redirect_service.route('/api/retention-panel/', methods=['GET'])
 def retention_panel(api_key):
     # Retrieve parameters
     quantity = request.get('qty')
