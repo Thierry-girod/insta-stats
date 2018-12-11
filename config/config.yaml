@@ -1,0 +1,5 @@
+RETENTION_API:
+    SCHEME: 'http'
+    HOST: 'retentionpanel.com'
+    PATH: 'retentional_api.php'
+    API_KEY: ''
