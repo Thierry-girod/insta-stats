@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+config/config_local.py
 # C extensions
 *.so
 

@@ -1,16 +1,20 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from module.configuration import get_config
 import requests
 
 api_redirect_service = Blueprint('api_redirect', __name__)
 conf = get_config()
 
+@api_redirect_service.route('/')
+def hello_world():
+    return 'Hello, World!'
+
 @api_redirect_service.route('/api/retention-panel/', methods=['GET'])
-def retention_panel(api_key):
+def retention_panel():
     # Retrieve parameters
-    quantity = request.get('qty')
-    service_id = request.get('service_id')
-    link = request.get('link')
+    quantity = request.args.get('qty', False)
+    service_id = request.args.get('service_id', False)
+    link = request.args.get('link', False)
 
     # Call API
     url = "{scheme}://{host}/{path}".format(
@@ -25,4 +29,4 @@ def retention_panel(api_key):
         'link': link
     })
 
-    return jsonify(resp.json())
+    return jsonify(response.json())
