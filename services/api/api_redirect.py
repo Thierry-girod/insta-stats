@@ -5,10 +5,6 @@ import requests
 api_redirect_service = Blueprint('api_redirect', __name__)
 conf = get_config()
 
-@api_redirect_service.route('/')
-def hello_world():
-    return 'Hello, World!'
-
 @api_redirect_service.route('/api/retention-panel/', methods=['GET'])
 def retention_panel():
     # Retrieve parameters
