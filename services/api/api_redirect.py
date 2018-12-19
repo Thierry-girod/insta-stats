@@ -11,18 +11,19 @@ def retention_panel():
     quantity = request.args.get('qty', False)
     service_id = request.args.get('service_id', False)
     link = request.args.get('link', False)
-
     # Call API
     url = "{scheme}://{host}/{path}".format(
         scheme=conf['RETENTION_API']['SCHEME'],
         host=conf['RETENTION_API']['HOST'],
         path=conf['RETENTION_API']['PATH']
     )
+    
     response = requests.get(url,  params={
-        'apiKey': conf['RETENTION_API']['API_KEY'],
+        'apikey': conf['RETENTION_API']['API_KEY'],
         'qty': quantity,
-        'service_id': service_id,
-        'link': link
+        'serviceid': service_id,
+        'link': link,
+	'action': 'add'
     })
 
     return jsonify(response.json())
